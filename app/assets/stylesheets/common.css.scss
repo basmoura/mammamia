@@ -1,0 +1,41 @@
+body { height: 100%; min-height: 100% }
+html { height: 100%; min-height: 100% }
+body { background: url('pizza1.jpg') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
+nav { padding-top: 18px; }
+
+h1 {
+  margin: 0 0 10px 0;
+  font-weight: 200;
+  font-size: 50px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.col-top { background: rgba(16, 18, 18, 0.8); height: 80px; padding-top: 4px; }
+
+.full-content {
+  padding: 20px;
+  margin: 20px 0;
+  background: rgba(255,255,255,0.9);
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+#error_explanation {
+  background: #FECCCB;
+  border: 1px solid #FEACAC;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#error_explanation h2 {
+  margin: 0px;
+  font-size: 14px;
+  color: #900;
+}
+
+#error_explanation li {
+  font-size: 12px;
+  color: #900;
+  padding-top: 8px;
+}
