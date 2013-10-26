@@ -1,11 +1,11 @@
-<h1>Listing restaurants</h1>
+<h1>Restaurantes</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Founded at</th>
+      <th>Nome</th>
+      <th>Endereço</th>
+      <th>Data de Criação</th>
       <th>Email</th>
       <th></th>
       <th></th>
@@ -14,20 +14,22 @@
   </thead>
 
   <tbody>
-    <% @restaurants.each do |restaurant| %>
-      <tr>
-        <td><%= restaurant.name %></td>
-        <td><%= restaurant.address %></td>
-        <td><%= restaurant.founded_at %></td>
-        <td><%= restaurant.email %></td>
-        <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @restaurants.each do |restaurant| %>
+  <tr>
+    <td><%= restaurant.name %></td>
+    <td><%= restaurant.address %></td>
+    <td><%= restaurant.founded_at.strftime("%d/%m/%Y") %></td>
+    <td><%= restaurant.email %></td>
+    <td><%= link_to 'Ver', restaurant %></td>
+    <td><%= link_to 'Editar', edit_restaurant_path(restaurant) %></td>
+    <td><%= link_to 'Remover', restaurant, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+  </tr>
+  <% end %>
   </tbody>
 </table>
-
+<div class="text-center">
+  <%= will_paginate @restaurantes %>
+</div>
 <br>
 
-<%= link_to 'New Restaurant', new_restaurant_path %>
+<%= link_to 'Novo Restaurante', new_restaurant_path, class: "btn btn-success" %>

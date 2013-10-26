@@ -2,7 +2,7 @@ class PizzasController < ApplicationController
   before_action :set_pizza, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pizzas = Pizza.all
+    @pizzas = Pizza.paginate(page: params[:page])
   end
 
   def show
@@ -28,6 +28,8 @@ class PizzasController < ApplicationController
   end
 
   def update
+    params[:pizza][:ingredient_ids] ||= []
+
     if @pizza.update(pizza_params)
       redirect_to pizzas_path
       flash["success"] = "Pizza atualizada com sucesso."

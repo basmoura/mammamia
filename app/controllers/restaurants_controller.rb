@@ -4,7 +4,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.paginate(page: params[:page])
   end
 
   # GET /restaurants/1
@@ -24,7 +24,6 @@ class RestaurantsController < ApplicationController
   # POST /restaurants
   # POST /restaurants.json
   def create
-    abort restaurant_params.to_s
     @restaurant = Restaurant.new(restaurant_params)
 
     respond_to do |format|

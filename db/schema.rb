@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131025151151) do
+ActiveRecord::Schema.define(version: 20131026173240) do
 
   create_table "ingredients", force: true do |t|
     t.string   "name"
@@ -31,6 +31,10 @@ ActiveRecord::Schema.define(version: 20131025151151) do
     t.integer  "kcal"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "restaurants", force: true do |t|
@@ -41,6 +45,10 @@ ActiveRecord::Schema.define(version: 20131025151151) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "capacity"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
 end

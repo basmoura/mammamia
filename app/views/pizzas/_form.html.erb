@@ -1,7 +1,6 @@
 <%= form_for(@pizza) do |f| %>
 <% if @pizza.errors.any? %>
-<div id="error_explanation">
-
+<div class="alert alert-danger">
   <ul>
     <% @pizza.errors.full_messages.each do |msg| %>
     <li><%= msg %></li>
@@ -9,27 +8,40 @@
   </ul>
 </div>
 <% end %>
-<div class="field">
-  <%= f.label :name %><br>
-  <%= f.text_field :name %>
-</div>
-<div class="field">
-  <%= f.label :description %><br>
-  <%= f.text_area :description %>
-</div>
-<div class="field">
-  <%= f.label :price %><br>
-  <%= f.text_field :price %>
-</div>
-<div class="field">
-  <%= f.label :kcal %><br>
-  <%= f.text_field :kcal %>
-</div>
-<div class="field">
-  <%= f.select :ingredient_ids, Ingredient.all.collect {|p| [ p.name, p.id ] }, {}, { multiple: true } %>
-</div>
-<div class="actions">
-  <%= f.submit %>
-</div>
+<ul class="list-unstyled">
+  <li>
+  <%= f.label :name, "Nome" %>
+  <%= f.text_field :name, class: "form-control" %>
+  </li>
+  <li>
+  <%= f.label :description, "Descrição" %>
+  <%= f.text_area :description, class: "form-control" %>
+  </li>
+  <li>
+  <%= f.label :price, "Valor" %><br>
+  <%= f.text_field :price, class: "form-control"  %>
+  </li>
+  <li>
+  <%= f.label :kcal, "Valor Calórico" %><br>
+  <%= f.text_field :kcal, class: "form-control"  %>
+  </li>
+  <li>
+  <%= f.label "Sabores" %>
+  <% @ingredients.each do |i| %>
+  <div class="checkbox">
+    <%= content_tag(:span, check_box_tag("pizza[ingredient_ids][]", i.id, @pizza.ingredients.include?(i)), nil) %> <%= i.name %>
+  </div>
+  </li>
+  <% end %>
+  <li>
+  <%= f.label :photo, "Imagem" %><br>
+  <%= f.file_field :photo %>
+  </li>
+  <li>
+  <br/>
+  <%= f.submit "Cadastrar Pizza", class: "btn btn-success" %>
+  <%= link_to("Voltar", pizzas_path, class: "btn btn-link") %>
+  </li>
+</ul>
 <% end %>
 

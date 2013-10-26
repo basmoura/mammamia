@@ -1,0 +1,37 @@
+<h1>Pizzas</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Valor</th>
+      <th>Valor Calórico</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @pizzas.each do |pizza| %>
+  <tr>
+    <td><%= pizza.name %></td>
+    <td><%= pizza.description %></td>
+    <td><%= "R$ " + pizza.price.to_s %></td>
+    <td><%= pizza.kcal.to_s + " kcal" %></td>
+    <td><%= link_to 'Ver', pizza %></td>
+    <td><%= link_to 'Editar', edit_pizza_path(pizza) %></td>
+    <td><%= link_to 'Remover', pizza, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+<div class="text-center">
+  <%= will_paginate @pizzas %>
+</div>
+<br>
+
+<%= link_to 'Nova Pizza', new_pizza_path, class: "btn btn-success" %>
+
+

@@ -12,12 +12,12 @@
         <div class="row">
           <div class="col-md-12">
             <div class="pull-left">
-              <%= image_tag("logo.png") %>
+              <%= link_to(image_tag("logo.png"), root_path) %>
             </div>
             <div class="pull-right">
               <nav>
-                <%= link_to "Pizzarias", "#", class: "btn btn-success" %>
-                <%= link_to "Pizzas", "#", class: "btn btn-default" %>
+                <%= link_to "Pizzarias", restaurants_path, class: "btn btn-success" %>
+                <%= link_to "Pizzas", pizzas_path, class: "btn btn-default" %>
                 <%= link_to "Ranking ", "#", class: "btn btn-danger" %>
               </nav>
             </div>

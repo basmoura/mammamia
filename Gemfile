@@ -33,6 +33,9 @@ gem 'simple_form'
 # Anexar Arquivos
 gem 'paperclip'
 
+# Paginação
+gem 'will_paginate'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

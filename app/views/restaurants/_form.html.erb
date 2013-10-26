@@ -1,36 +1,42 @@
 <%= form_for(@restaurant) do |f| %>
-  <% if @restaurant.errors.any? %>
-    <div id="error_explanation">
-
-      <ul>
-      <% @restaurant.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address %>
-  </div>
-  <div class="field">
-    <%= f.label :founded_at %><br>
-    <%= f.date_select :founded_at %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :capacity %><br>
-    <%= f.text_field :capacity, type: :number %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<% if @restaurant.errors.any? %>
+<div class="alert alert-danger">
+  <ul class="list-unstyled">
+    <% @restaurant.errors.full_messages.each do |msg| %>
+    <li><%= "Campo " + msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<ul class="list-unstyled">
+  <li>
+  <%= f.label :name, "Nome" %>
+  <%= f.text_field :name, class: "form-control" %>
+  </li>
+  <li>
+  <%= f.label :address, "Endereço" %>
+  <%= f.text_area :address, class: "form-control" %>
+  </li>
+  <li>
+  <%= f.label :founded_at, "Data de Criação" %><br>
+  <%= f.text_field :founded_at, class: "form-control"  %>
+  </li>
+  <li>
+  <%= f.label :email, "Email" %><br>
+  <%= f.text_field :email, class: "form-control"  %>
+  </li>
+  <li>
+  <%= f.label :capacity, "Capacidade" %><br>
+  <%= f.text_field :capacity, class: "form-control"  %>
+  </li>
+  <li>
+  <%= f.label :photo, "Imagem" %><br>
+  <%= f.file_field :photo %>
+  </li>
+  <li>
+  <br/>
+  <%= f.submit "Salvar", class: "btn btn-success" %>
+  <%= link_to("Voltar", restaurants_path, class: "btn btn-link") %>
+  </li>
+</ul>
 <% end %>
