@@ -1,0 +1,32 @@
+<h1>Ingredientes</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @ingredients.each do |ingredient| %>
+  <tr>
+    <td><%= ingredient.name %></td>
+    <td><%= link_to 'Ver', ingredient %></td>
+    <td><%= link_to 'Editar', edit_ingredient_path(ingredient) %></td>
+    <td><%= link_to 'Remover', ingredient, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+<div class="text-center">
+  <%= will_paginate @ingredients %>
+</div>
+<br>
+
+<%= link_to 'Novo Ingrediente', new_ingredient_path, class: "btn btn-success" %>
+
+
+

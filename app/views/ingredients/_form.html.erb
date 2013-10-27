@@ -1,0 +1,21 @@
+<%= form_for(@ingredient) do |f| %>
+<% if @ingredient.errors.any? %>
+<div class="alert alert-danger">
+  <ul>
+    <% @ingredient.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<ul class="list-unstyled">
+  <li>
+  <%= f.label :name, "Nome" %>
+  <%= f.text_field :name, class: "form-control" %>
+  </li>
+  <br/>
+  <%= f.submit "Salvar", class: "btn btn-success" %>
+  <%= link_to("Voltar", ingredients_path, class: "btn btn-link") %>
+  </li>
+</ul>
+<% end %>
