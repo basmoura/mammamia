@@ -2,7 +2,7 @@ class PizzasController < ApplicationController
   before_action :set_pizza, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pizzas = Pizza.paginate(page: params[:page])
+    @pizzas = Pizza.paginate(page: params[:page]).order("name")
   end
 
   def show
