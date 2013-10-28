@@ -1,9 +1,9 @@
 class HomeController < ApplicationController
   def index
-    @pizzas = Pizza.order("name")
+    @pizzas = Pizza.paginate(page: params[:page])
 
     if params[:name].blank?
-      @pizzas = @pizzas.paginate(page: params[:page])
+      @pizzas = @pizzas.order("name")
     else
       @pizzas = @pizzas.includes(:ingredients)
       .where("LOWER(ingredients.name) = ?", params[:name].downcase).references(:ingredients)
