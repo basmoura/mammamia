@@ -1,2 +1,4 @@
 <h1>Cadastrar Pizza</h1>
-<%= render "form" %>
+<%= form_for(@pizza, url: restaurant_pizzas_path) do |f| %>
+  <%= render "form", f: f %>
+<% end %>

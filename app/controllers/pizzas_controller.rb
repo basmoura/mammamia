@@ -2,7 +2,7 @@ class PizzasController < ApplicationController
   before_action :set_pizza, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pizzas = Pizza.paginate(page: params[:page]).order("name")
+    @pizzas = Pizza.where(restaurant_id: params[:restaurant_id]).paginate(page: params[:page]).order("name")
   end
 
   def show
@@ -15,8 +15,9 @@ class PizzasController < ApplicationController
 
   def create
     @pizza = Pizza.new(pizza_params)
+    @pizza.restaurant_id = params[:restaurant_id]
     if @pizza.save
-      redirect_to pizzas_path
+      redirect_to restaurant_pizzas_path
       flash["success"] = "Pizza cadastrada com sucesso."
     else
       render :new
@@ -31,7 +32,7 @@ class PizzasController < ApplicationController
     params[:pizza][:ingredient_ids] ||= []
 
     if @pizza.update(pizza_params)
-      redirect_to pizzas_path
+      redirect_to restaurant_pizzas_path
       flash["success"] = "Pizza atualizada com sucesso."
     else
       render :edit

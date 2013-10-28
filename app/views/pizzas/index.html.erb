@@ -8,8 +8,6 @@
       <th>Valor</th>
       <th>Valor Calórico</th>
       <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -17,12 +15,13 @@
   <% @pizzas.each do |pizza| %>
   <tr>
     <td><%= pizza.name %></td>
-    <td><%= pizza.description %></td>
-    <td><%= "R$ " + pizza.price.to_s %></td>
-    <td><%= pizza.kcal.to_s + " kcal" %></td>
-    <td><%= link_to 'Ver', pizza %></td>
-    <td><%= link_to 'Editar', edit_pizza_path(pizza) %></td>
-    <td><%= link_to 'Remover', pizza, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+    <td><%= simple_format(pizza.description) %></td>
+    <td><%= pizza.price %></td>
+    <td><%= pizza.kcal %></td>
+    <td>
+      <%= link_to 'Editar', edit_restaurant_pizza_path(restaurant_id: pizza.restaurant.id, id: pizza.id), class: "btn btn-default btn-xs" %>
+      <%= link_to 'Remover', restaurant_pizza_path(restaurant_id: pizza.restaurant.id, id: pizza.id), method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger btn-xs" %>
+    </td>
   </tr>
   <% end %>
   </tbody>
@@ -32,6 +31,6 @@
 </div>
 <br>
 
-<%= link_to 'Nova Pizza', new_pizza_path, class: "btn btn-success" %>
+<%= link_to 'Nova Pizza', new_restaurant_pizza_path, class: "btn btn-success" %>
 
 

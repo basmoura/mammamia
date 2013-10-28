@@ -8,8 +8,6 @@
       <th>Data de Criação</th>
       <th>Email</th>
       <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -18,11 +16,14 @@
   <tr>
     <td><%= restaurant.name %></td>
     <td><%= restaurant.address %></td>
-    <td><%= restaurant.founded_at.strftime("%d/%m/%Y") %></td>
+    <td><%= restaurant.founded_at.strftime('%d/%m/%Y') if restaurant.founded_at %></td>
     <td><%= restaurant.email %></td>
-    <td><%= link_to 'Ver', restaurant %></td>
-    <td><%= link_to 'Editar', edit_restaurant_path(restaurant) %></td>
-    <td><%= link_to 'Remover', restaurant, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+    <td>
+      <%= link_to 'Cardápio', restaurant_pizzas_path(restaurant), class: "btn btn-success btn-xs" %>
+      <%= link_to 'Ver', restaurant, class: "btn btn-success btn-xs" %>
+      <%= link_to 'Editar', edit_restaurant_path(restaurant), class: "btn btn-default btn-xs" %>
+      <%= link_to 'Remover', restaurant, method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger btn-xs" %>
+    </td>
   </tr>
   <% end %>
   </tbody>

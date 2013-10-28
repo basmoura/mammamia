@@ -1,4 +1,3 @@
-<%= form_for(@pizza) do |f| %>
 <% if @pizza.errors.any? %>
 <div class="alert alert-danger">
   <ul>
@@ -40,8 +39,6 @@
   <li>
   <br/>
   <%= f.submit "Salvar", class: "btn btn-success" %>
-  <%= link_to("Voltar", pizzas_path, class: "btn btn-link") %>
+  <%= link_to("Voltar", :back, class: "btn btn-link") %>
   </li>
 </ul>
-<% end %>
-
