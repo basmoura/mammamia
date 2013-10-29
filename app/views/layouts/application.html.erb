@@ -1,33 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MammaMia</title>
-    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <header class="col-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="pull-left">
-              <%= link_to(image_tag("logo.png"), root_path) %>
-            </div>
-            <div class="pull-right">
-              <nav>
-                <%= link_to "Pizzarias", restaurants_path, class: "btn btn-success" %>
-                <%= link_to "Ingredientes ", ingredients_path, class: "btn btn-danger" %>
-              </nav>
-            </div>
-          </div>
+<head>
+<title>MammaMia</title>
+<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+</head>
+<body>
+<header class="col-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="pull-left">
+          <%= link_to(image_tag("logo.png"), root_path) %>
+        </div>
+        <div class="pull-right">
+          <nav>
+            <%= link_to "Pizzarias", restaurants_path, class: "btn btn-success" %>
+            <%= link_to "Ingredientes ", ingredients_path, class: "btn btn-danger" %>
+          </nav>
         </div>
       </div>
-    </header>
-    <div class="container">
-      <section class="full-content">
-        <%= yield %>
-      </section>
     </div>
-  </body>
+  </div>
+</header>
+<div class="container">
+
+
+  <section class="full-content">
+    <div class="col-md-12">
+      <% flash.each do |key, f| %>
+      <div class="alert alert-<%= key %>">
+        <%= f %>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      </div>
+      <% end %>
+    </div>
+    <%= yield %>
+  </section>
+</div>
+</body>
 </html>

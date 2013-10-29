@@ -41,7 +41,7 @@ class PizzasController < ApplicationController
 
   def destroy
     @pizza.destroy
-    redirect_to pizzas_path
+    redirect_to root_path
     flash["success"] = "Pizza removida com sucesso."
   end
 
